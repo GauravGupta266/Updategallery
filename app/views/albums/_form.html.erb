@@ -1,0 +1,50 @@
+<div class="container">
+<%= form_with model: album do |form| %>
+  <div>
+    <%= form.label :title,class:"form-group" %>
+    <%= form.text_field :title,class:"form-control" %>
+    <% album.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :description,class:"form-group" %>
+    <%= form.text_area :description,class:"form-control" %>
+    <% album.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+    <div>
+    <%= form.label :tag, class:"form-group" %>
+    <%= form.text_field :all_tags, class:"form-control" %>
+    <% album.errors.full_messages_for(:all_tags).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :cover_image,class:"form-group" %>
+    <%= form.file_field :cover_image,class:"form-control" %>
+    <% album.errors.full_messages_for(:cover_image).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :images,class:"form-group" %><br>
+    <%= form.file_field :images,class:"form-control", :multiple => true %>
+    <% album.errors.full_messages_for(:images).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= form.check_box :published, {}, true, false%> 
+    <%= form.label "Published"%>
+  </div><br>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+</div>

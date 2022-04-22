@@ -1,0 +1,29 @@
+<%# header start %>
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+       <% if user_signed_in?%>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center">
+          <li><%= link_to "Home", root_path, class:"btn btn-info me-2" %></li>
+          <li><%= link_to "Create Album", new_album_path, class:"btn btn-danger" %></li>          
+        </ul>
+        <%else%>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <%= link_to "Home", root_path, class:"btn btn-primary me-2" %>
+        </ul>
+        <%end%>
+        <div class="text-end">
+        <% if user_signed_in? %>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <p>Email: <%= current_user.email%></p>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-success mb-2 ms-2" %>
+        </ul>  
+        <% else %>
+          <%= link_to "Sign Up",  new_user_registration_path, class:"btn btn-info me-2" %>
+          <%= link_to "Sign In",  new_user_session_path, class:"btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </header>
+<%# header end %>

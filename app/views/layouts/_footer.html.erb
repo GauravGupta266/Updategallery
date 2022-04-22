@@ -1,0 +1,15 @@
+<%# footer start %>
+<div class="container-fluid bg-dark">
+<footer class="py-3 my-4 mb-0">
+<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+<% if user_signed_in?%>
+  <li class="me-2 nav-link px-2 text-muted "><%= link_to "Home", root_path, class:"btn btn-success" %></li>
+  <%else%>
+  <li class="me-2 nav-link px-2 text-muted"><%= link_to "Home", root_path, class:" btn btn-success" %></li>
+<%end%>    
+  <li class="me-1 nav-link px-2 text-muted"><%= link_to "Create Album", new_album_path, class:"btn btn-primary" %></button></li>
+</ul>
+<p class="text-center text-muted">&copy; 2021 Company, Inc</p>
+</footer>
+</div>
+<%# footer end %>

@@ -1,0 +1,49 @@
+<%# body start %>
+  <%= search_form_for @q, url: root_path do |f| %>
+    <div class="form-group text-center">
+      <%= f.search_field :tags_name_eq ,placeholder:'search by tag' %>
+      <%= f.submit %>
+    </div>
+  <%end%>
+<br>
+<h1 class="text-center mt-3">Here You Can View Published Albums</h1><br>
+<div class="container">
+<div class="row">
+  <% @albums.each do |album| %>
+      <div class="col-md-4">
+        <div class="card mt-4">
+          <div class="card-header">
+            <div class="text-center"> 
+              <strong>Title:</strong>
+              <%=album.title%>
+            </div>
+          </div>
+          <div class="card-body text-center"style="height:17rem;">
+            <% if album.cover_image.attached? %>
+                <%= image_tag(album.cover_image,style:"width:100%")%>
+            <%end%>
+          </div>
+          <div class="card-footer">
+          <div class="text-center">
+          <strong>Tag:</strong>
+           <%= album.all_tags%>
+        </div>
+        <div class="text-center">
+            <strong>Description:</strong>
+            <%=album.description%>
+          </div>
+          <div class="text-center">
+            <strong>Total Images: </strong>
+            <%=album.images.count%>
+          </div>
+          <div class="text-center">
+            <strong>Created at :</strong>
+            <%=album.created_at.time %>
+          </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>  
+<%# body end %>
